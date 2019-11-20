@@ -29,14 +29,14 @@ void setup() {
   TIME.setPixelColor(4, pixels.Color(71, 0, 50));
   TIME.setPixelColor(5, pixels.Color(71, 0, 50));
 
-  POWER.setPixelColor(i, pixels.Color(71, 0, 50));
-  POWER.setPixelColor(i, pixels.Color(71, 0, 50));
+  POWER.setPixelColor(6, pixels.Color(71, 0, 50));
+  POWER.setPixelColor(7, pixels.Color(71, 0, 50));
 
-  SPACE.setPixelColor(i, pixels.Color(71, 0, 50));
-  SPACE.setPixelColor(i, pixels.Color(71, 0, 50));
+  SPACE.setPixelColor(8, pixels.Color(71, 0, 50));
+  SPACE.setPixelColor(9, pixels.Color(71, 0, 50));
 
-  REALITY.setPixelColor(i, pixels.Color(71, 0, 50));
-  REALITY.setPixelColor(i, pixels.Color(71, 0, 50));
+  REALITY.setPixelColor(10, pixels.Color(71, 0, 50));
+  REALITY.setPixelColor(11, pixels.Color(71, 0, 50));
 }
 
 void loop() {
