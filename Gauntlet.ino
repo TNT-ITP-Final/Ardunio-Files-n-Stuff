@@ -3,66 +3,63 @@
 #include <avr/power.h>
 #endif
 #define PIN 2
-#define NUMPIXELS 16 // Popular NeoPixel ring size
+#define NUMPIXELS 12
 #define BRIGHTNESS 25
-#define DELAYVAL 500 // Time (in milliseconds) to pause between pixels
 
-Adafruit_NeoPixel MIND(2, PIN, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel SOUL(2, PIN, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel TIME(2, PIN, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel POWER(2, PIN, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel SPACE(2, PIN, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel REALITY(2, PIN, NEO_GRB + NEO_KHZ800);
-
-Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel ring(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
 void setup() {
-  pixels.setBrightness(BRIGHTNESS);
-  pixels.begin(); // INITIALIZE NeoPixel strip object (REQUIRED)
-
-  MIND.setPixelColor(0, pixels.Color(71, 0, 50));
-  MIND.setPixelColor(1, pixels.Color(71, 0, 50));
-  
-  SOUL.setPixelColor(2, pixels.Color(71, 0, 50));
-  SOUL.setPixelColor(3, pixels.Color(71, 0, 50));
-  
-  TIME.setPixelColor(4, pixels.Color(71, 0, 50));
-  TIME.setPixelColor(5, pixels.Color(71, 0, 50));
-
-  POWER.setPixelColor(6, pixels.Color(71, 0, 50));
-  POWER.setPixelColor(7, pixels.Color(71, 0, 50));
-
-  SPACE.setPixelColor(8, pixels.Color(71, 0, 50));
-  SPACE.setPixelColor(9, pixels.Color(71, 0, 50));
-
-  REALITY.setPixelColor(10, pixels.Color(71, 0, 50));
-  REALITY.setPixelColor(11, pixels.Color(71, 0, 50));
+  ring.setBrightness(BRIGHTNESS);
+  ring.begin(); // INITIALIZE NeoPixel strip object (REQUIRED)
 }
 
-void loop() {
-  pixels.clear(); // Set all pixel colors to 'off'
+void loop()
+{
+  ring.clear(); // Set all pixel colors to 'off'
 
-  // The first NeoPixel in a strand is #0, second is 1, all the way up to 15
-  for(int i = 0; i < NUMPIXELS; i++) { // For each pixel...
+  mind();
+  soul();
+  Time();
+  power();
+  space();
+  reality();
 
-    pixels.setPixelColor(i, pixels.Color(71, 0, 50));
+  
+  ring.show();
+}
 
-    pixels.show();   // Send the updated pixel colors to the hardware.
+void mind()
+{
+  ring.setPixelColor(0, ring.Color(255, 221, 0));
+  ring.setPixelColor(1, ring.Color(255, 221, 0));
+}
 
-    delay(DELAYVAL); // Pause before next pass through loop
-  }
+void soul()
+{
+  ring.setPixelColor(2, ring.Color(255, 98, 0));
+  ring.setPixelColor(3, ring.Color(255, 98, 0));
+}
+
+void Time()
+{
+  ring.setPixelColor(4, ring.Color(0, 255, 0));
+  ring.setPixelColor(5, ring.Color(0, 255, 0));
 }
 
 void power()
-  {
-    //scales up the brightness in 2 seconds
-    for(int i = 0; i < 50; i++)
-    {
-      pixels.setBrightness(i)
-      delay(40);
-    }
+{
+  ring.setPixelColor(6, ring.Color(128, 0, 128));
+  ring.setPixelColor(7, ring.Color(128, 0, 128));
+}
 
-    pixels.show();   // Send the updated pixel colors to the hardware.
+void space()
+{
+  ring.setPixelColor(8, ring.Color(0, 0, 255));
+  ring.setPixelColor(9, ring.Color(0, 0, 255));
+}
 
-  }
+void reality()
+{
+  ring.setPixelColor(10, ring.Color(255, 0, 0));
+  ring.setPixelColor(11, ring.Color(255, 0, 0));
 }
