@@ -2,27 +2,30 @@
 #ifdef __AVR__
 #include <avr/power.h>
 #endif
-#define PIN 9
-#define NUMPIXELS 12
 //#define BRIGHTNESS 100
 
-#define TIME_BUTTON 6
-#define REALITY_BUTTON 3
-#define POWER_BUTTON 4
-#define SNAP_BUTTON 5
 #define MIND_BUTTON 2
 #define SOUL_BUTTON 7
+#define TIME_BUTTON 6
+#define POWER_BUTTON 4
+#define REALITY_BUTTON 3
 #define SPACE_BUTTON 8
 
-Adafruit_NeoPixel ring(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+#define SNAP_BUTTON 5
+
+// 12 is the number of pixels, 9 is the pin
+Adafruit_NeoPixel ring(12, 9, NEO_GRB + NEO_KHZ800);
 
 float population = 7000000000;
+double seconds = 0.00;
 
 void setup() {
   Serial.begin(9600);
   ring.setBrightness(75);
   ring.begin(); // INITIALIZE NeoPixel strip object (REQUIRED)
-  
+
+  #define MIND_BUTTON 2
+
   pinMode (TIME_BUTTON, INPUT);
   pinMode (REALITY_BUTTON, INPUT);
   pinMode (POWER_BUTTON, INPUT);
@@ -50,13 +53,12 @@ void loop() {
     space();
   } else if (digitalRead(SNAP_BUTTON) == HIGH) {
     snap();
-  } else {
-      ring.clear();
   }
 
   ring.show();
   delay(1000);
-  
+
+  ring.clear();
 }
 
 void mind() {
@@ -82,9 +84,17 @@ void soul() {
 }
 
 void Time() {
+  
   ring.setPixelColor(4, ring.Color(0, 255, 0));
   ring.setPixelColor(5, ring.Color(0, 255, 0));
-  Serial.println("0");
+    
+  while(!(digitalRead(TIME_BUTTON) == HIGH))
+  {
+    seconds += 0.01;
+    delay(1000);
+  }
+  Serial.println(seconds);
+  //Serial.println("0,0," + String(seconds) + ",0,0,0");
 }
 
 void power() {
@@ -120,5 +130,5 @@ void snap() {
   ring.setPixelColor(11, ring.Color(255, 225, 255));
   ring.setPixelColor(12, ring.Color(255, 225, 255));
   ring.show();
-  Serial.print("0");
+  Serial.println("1 + 1 = 2," + String(population /= 2) + ",0,Often disapointing,46480000‬,21");
 }
