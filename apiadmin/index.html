@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Assignment 15/Final Form</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body style="margin:20px;">
+
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+
+	<h1>Get stoned</h1>
+	<a href="../index.php">Back</a>
+	<form action="../api/assgn15_post.php" method="post">
+		<fieldset>
+			<legend>Some stuff about stones:</legend>
+
+				<div class="form-group">
+					<label for="mind">Mind:</label>
+					<input type="text" id="mind" name="mind" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label for="soul">Soul:</label>
+					<input type="text" id="soul" name="soul" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label for="time">Time:</label>
+					<input type="text" id="time" name="time" maxlength="4" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label for="power">Power:</label>
+					<input type="text" id="power" name="power" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label for="space">Space:</label>
+					<input type="text" id="space" name="space" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label for="reality">Reality:</label>
+					<input type="text" id="reality" name="reality" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label for="apikey">API Key:</label>
+					<input type="text" id="apikey" name="apikey" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<input type="submit" value="Add stuff" class="btn btn-primary">
+				</div>
+		</fieldset>
+
+		</form>
+</div>
+</div>
+</div>
+
+</body>
+</html>
