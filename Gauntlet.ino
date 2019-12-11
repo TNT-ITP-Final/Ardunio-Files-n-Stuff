@@ -18,6 +18,7 @@ Adafruit_NeoPixel ring(12, 9, NEO_GRB + NEO_KHZ800);
 
 float population = 7000000000;
 double seconds = 0.00;
+boolean timerOn = false;
 
 void setup() {
   Serial.begin(9600);
@@ -85,16 +86,19 @@ void soul() {
 
 void Time() {
   
+  timerOn = true;
   ring.setPixelColor(4, ring.Color(0, 255, 0));
   ring.setPixelColor(5, ring.Color(0, 255, 0));
     
-  while(!(digitalRead(TIME_BUTTON) == HIGH))
-  {
+  while (timerOn == true) {
     seconds += 0.01;
     delay(1000);
+    if (digitalRead(TIME_BUTTON) == HIGH) {
+      timerOn = false;
+      break;
+    }
   }
-  Serial.println(seconds);
-  //Serial.println("0,0," + String(seconds) + ",0,0,0");
+  Serial.println("0,0," + String(seconds) + ",0,0,0");
 }
 
 void power() {
@@ -130,5 +134,5 @@ void snap() {
   ring.setPixelColor(11, ring.Color(255, 225, 255));
   ring.setPixelColor(12, ring.Color(255, 225, 255));
   ring.show();
-  Serial.println("1 + 1 = 2," + String(population /= 2) + ",0,Often disapointing,46480000‬,21");
+  Serial.println("1 + 1 = 2," + String(population /= 2) + ",0,Often disappointing,46480000‬,21");
 }
